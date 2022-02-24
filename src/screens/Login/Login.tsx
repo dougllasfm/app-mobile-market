@@ -29,6 +29,7 @@ export default function Login() {
         // https://firebase.google.com/docs/reference/js/firebase.User
         const uid = user.uid;
         
+        
         // ...
       } else {
         console.log("teste")
