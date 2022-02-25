@@ -1,4 +1,3 @@
-import { colors } from './../../styles/colors';
 import styled from 'styled-components/native';
 
 export const Container = styled.View`
@@ -10,12 +9,12 @@ export const Container = styled.View`
 
 export const Text = styled.Text`
   font-size: 20px;
-  color: ${colors.primary};
+  color: ${({ theme }) => theme.colors.primary};
   margin-top: 5px;
 `
 
 export const Description = styled.Text`
-  color: ${colors.darkBlue};
+  color: ${({ theme }) => theme.colors.darkBlue};
   font-size: 16px;
   margin-left: 5px;
 `

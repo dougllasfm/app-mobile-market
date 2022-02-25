@@ -1,4 +1,3 @@
-import { colors } from './../../styles/colors';
 import styled from "styled-components/native";
 
 type Props = {
@@ -14,7 +13,7 @@ export const ImageView = styled.Image`
 export const ViewImage = styled.TouchableOpacity`
   justify-content: center;
   align-items: center;
-  background: ${colors.darkBlue};
+  background: ${({ theme }) => theme.colors.darkBlue};
   height: 140px;
   border-radius: 12px;
   margin: 0px 15px 10px;
@@ -36,7 +35,7 @@ export const Details = styled.View`
 `;
 
 export const NameMarket = styled.Text`
-  color: ${colors.darkBlue};
+  color: ${({ theme }) => theme.colors.darkBlue};
   font-size: 18px;
   margin-bottom: 2px;
   font-weight: bold;
@@ -48,13 +47,13 @@ export const ViewHours = styled.View`
 `
 
 export const Hours = styled.Text`
-  color: ${colors.darkBlue};
+  color: ${({ theme }) => theme.colors.darkBlue};
   font-weight: bold;
   font-size: 14px;
 `;
 
 export const Status = styled.Text<Props>`
-  color: ${(props) => (props.status ? colors.green : colors.red )};
+  color: ${(props) => (props.status ? ({ theme }) => theme.colors.green : ({ theme }) => theme.colors.red )};
   font-size: 14px;
   margin-left: 6px;
 `
@@ -69,7 +68,7 @@ export const Tax = styled.View`
 
 export const TextTax = styled.Text`
   margin: 0 5px;
-  color: ${colors.darkGray};
+  color: ${({ theme }) => theme.colors.darkGray};
   font-size: 14px;
 `;
 

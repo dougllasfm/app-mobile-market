@@ -4,20 +4,22 @@ import {
   DrawerContentScrollView,
   DrawerItemList,
 } from "@react-navigation/drawer";
+import { useTheme } from 'styled-components/native';
 
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-import { colors } from "../../styles/colors";
 
 interface CustomDrawerProps {
   props: ReactNode;
 }
 
 function CustomDrawer({ props }: CustomDrawerProps) {
+  const theme = useTheme()
+
   return (
     <View style={{ flex: 1 }}>
       <DrawerContentScrollView
         {...props}
-        contentContainerStyle={{ backgroundColor: colors.primary }}
+        contentContainerStyle={{ backgroundColor: theme.colors.primary }}
       >
         <Image
           source={require("../../assets/user-profile.jpg")}

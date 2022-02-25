@@ -1,5 +1,4 @@
 import styled from "styled-components/native";
-import { colors } from "../../styles/colors";
 
 export const Container = styled.View`
   flex-direction: row;
@@ -15,13 +14,13 @@ export const DetailsProduct = styled.View`
 `;
 
 export const Name = styled.Text`
-  color: ${colors.darkBlue};
+  color: ${({ theme }) => theme.colors.darkBlue};
 `;
 
 export const Quantity = styled.Text`
-  color: ${colors.darkGray};
+  color: ${({ theme }) => theme.colors.darkGray};
 `;
 
 export const Price = styled.Text`
-  color: ${colors.green};
+  color: ${({ theme }) => theme.colors.green};
 `;

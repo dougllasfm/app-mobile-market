@@ -1,4 +1,3 @@
-import { colors } from './../../styles/colors';
 import { Platform } from "react-native";
 import styled from "styled-components/native";
 
@@ -17,16 +16,16 @@ export const DetailsOrder = styled.View`
 export const NameMarket = styled.Text`
   font-size: 20px;
   font-weight: bold;
-  color: ${colors.darkBlue};
+  color: ${({ theme }) => theme.colors.darkBlue};
 `;
 
 export const Address = styled.Text`
-  color: ${colors.darkGray};
+  color: ${({ theme }) => theme.colors.darkGray};
   font-size: 16px;
 `;
 
 export const Date = styled.Text`
-  color: ${colors.darkGray};
+  color: ${({ theme }) => theme.colors.darkGray};
   font-size: 16px;
 `;
 
@@ -44,11 +43,11 @@ export const SubTotalView = styled.View`
 
 export const SubTotal = styled.Text`
   font-size: 16px;
-  color: ${colors.darkGray};
+  color: ${({ theme }) => theme.colors.darkGray};
 `;
 
 export const Price = styled.Text`
-  color: ${colors.green};
+  color: ${({ theme }) => theme.colors.green};
   font-size: 16px;
 `;
 
@@ -60,7 +59,7 @@ export const DeliveryFeeView = styled.View`
 
 export const DeliveryFee = styled.Text`
   font-size: 16px;
-  color: ${colors.darkGray};
+  color: ${({ theme }) => theme.colors.darkGray};
 `;
 
 export const TotalView = styled.View`
@@ -71,7 +70,7 @@ export const TotalView = styled.View`
 
 export const Total = styled.Text`
   font-size: 16px;
-  color: ${colors.darkGray};
+  color: ${({ theme }) => theme.colors.darkGray};
 `;
 
 export const DetailsAddress = styled.View`
@@ -83,11 +82,11 @@ export const DetailsAddress = styled.View`
 export const Title = styled.Text`
   font-size: 20px;
   margin-bottom: 2px;
-  color: ${colors.darkBlue};
+  color: ${({ theme }) => theme.colors.darkBlue};
   font-weight: bold;
 `;
 
 export const AddressDelivery = styled.Text`
   font-size: 16px;
-  color: ${colors.darkGray};
+  color: ${({ theme }) => theme.colors.darkGray};
 `;

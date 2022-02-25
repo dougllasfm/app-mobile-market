@@ -1,4 +1,3 @@
-import { colors } from './../../styles/colors';
 import styled from "styled-components/native";
 
 export const Container = styled.View`
@@ -26,12 +25,12 @@ export const DetailsProduct = styled.View`
 
 export const TitleProduct = styled.Text`  
   font-size: 16px;
-  color: ${colors.darkBlue};
+  color: ${({ theme }) => theme.colors.darkBlue};
   font-weight: bold;
 `;
 
 export const Price = styled.Text`
-  color: ${colors.primary};
+  color: ${({ theme }) => theme.colors.primary};
   font-weight: bold;
 `;
 
@@ -60,14 +59,14 @@ export const Plus = styled.TouchableWithoutFeedback`
 `;
 
 export const Cont = styled.Text`
-  color: ${colors.primary};
+  color: ${({ theme }) => theme.colors.primary};
   font-size: 20px;
   font-weight: bold;
   margin: 0 5px;
 `
 
 export const Quantity = styled.Text`
-  color: ${colors.darkGray};
+  color: ${({ theme }) => theme.colors.darkGray};
 `;
 
 

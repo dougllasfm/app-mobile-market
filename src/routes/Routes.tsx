@@ -5,7 +5,6 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import CustomDrawer from "../components/CustomDrawer";
 
 import TabNavigator from "./TabNavigator";
-import { OrderRoutes } from "./StackRoutes";
 import { colors } from "../styles/colors";
 const Drawer = createDrawerNavigator();
 

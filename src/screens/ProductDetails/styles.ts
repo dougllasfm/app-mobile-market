@@ -1,6 +1,5 @@
 import { Platform } from "react-native";
 import styled from "styled-components/native";
-import { colors } from "../../styles/colors";
 
 export const Container = styled.View`
   background: #fff;
@@ -37,7 +36,7 @@ export const Confirmation = styled.View`
 `;
 
 export const Button = styled.TouchableOpacity`
-  background: ${colors.primary};
+  background: ${({ theme }) => theme.colors.primary};
   border-radius: 5px;
   padding: 13px 10px;
 `;

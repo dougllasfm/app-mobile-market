@@ -1,6 +1,5 @@
 import { Platform } from "react-native";
 import styled from "styled-components/native";
-import { colors } from "../../styles/colors";
 
 export const Container = styled.ScrollView`
   background: #fff;
@@ -29,13 +28,13 @@ export const ViewNameAndSatus = styled.View`
 
 export const NameCompany = styled.Text`
   font-size: 16px;
-  color: ${colors.darkBlue};
+  color: ${({ theme }) => theme.colors.darkBlue};
   font-weight: bold;
 `;
 
 export const Status = styled.Text`
   font-size: 14px;
-  color: ${colors.green};
+  color: ${({ theme }) => theme.colors.green};
   margin-left: 5px;
 `
 
@@ -54,7 +53,7 @@ export const InfosMarket = styled.View`
 `;
 
 export const Address = styled.Text`
-  color: ${colors.darkGray};
+  color: ${({ theme }) => theme.colors.darkGray};
   font-size: 14px;  
 `;
 
@@ -65,7 +64,7 @@ export const TaxView = styled.View`
 
 export const TextTax = styled.Text`
   margin-left: 3px;
-  color: ${colors.darkGray2};
+  color: ${({ theme }) => theme.colors.darkGray2};
 `;
 
 export const Search = styled.View`
@@ -81,11 +80,11 @@ export const Input = styled.TextInput`
   width: 75%;
   border-radius: 25px;
   height: 45px;
-  background: ${colors.gray};
+  background: ${({ theme }) => theme.colors.gray};
 `;
 
 export const ButtonSearch = styled.TouchableOpacity`
-  background: ${colors.primary};
+  background: ${({ theme }) => theme.colors.primary};
   height: 45px;
   padding: 5px 10px;
   justify-content: center;

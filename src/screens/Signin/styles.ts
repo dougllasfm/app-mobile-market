@@ -1,4 +1,3 @@
-import { colors } from "./../../styles/colors";
 import { Platform } from "react-native";
 import styled from "styled-components/native";
 
@@ -8,7 +7,7 @@ export const Container = styled.View`
   flex: 1;
   justify-content: center;
   align-items: center;
-  background: ${colors.primary};
+  background: ${({ theme }) => theme.colors.primary};
 `;
 
 export const Title = styled.Text`
@@ -34,7 +33,7 @@ export const Input = styled.TextInput`
 `;
 
 export const Button = styled.TouchableOpacity`
-  background: ${colors.darkBlue};
+  background: ${({ theme }) => theme.colors.darkBlue};
   height: 42px;
   padding: 5px;
   width: 80%;

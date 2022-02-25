@@ -1,4 +1,3 @@
-import { colors } from './../../styles/colors';
 import styled from "styled-components/native";
 
 export const Container = styled.TouchableOpacity`
@@ -22,21 +21,21 @@ export const Details = styled.View``;
 export const NameMarket = styled.Text`
   font-size: 15px;
   font-weight: bold;
-  color: ${colors.darkBlue};
+  color: ${({ theme }) => theme.colors.darkBlue};
 `;
 
 export const Order = styled.Text`
-  color: ${colors.green};
+  color: ${({ theme }) => theme.colors.green};
 `;
 
 export const Address = styled.Text`
-  color: ${colors.darkGray};
+  color: ${({ theme }) => theme.colors.darkGray};
 `;
 
 export const Buy = styled.Text`
-  color: ${colors.darkGray};
+  color: ${({ theme }) => theme.colors.darkGray};
 `;
 
 export const Date = styled.Text`
-  color: ${colors.darkGray};
+  color: ${({ theme }) => theme.colors.darkGray};
 `;

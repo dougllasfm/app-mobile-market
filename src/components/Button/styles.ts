@@ -1,10 +1,9 @@
-import { colors } from './../../styles/colors';
 import styled from "styled-components/native";
 
 export const ButtonText = styled.TouchableOpacity`
   height: 40px;
   border-radius: 8px;
-  background: ${colors.darkBlue};
+  background: ${({ theme }) => theme.colors.darkBlue};
   justify-content: center;
   align-items: center;
   width: 92px;

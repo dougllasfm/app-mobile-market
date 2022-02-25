@@ -1,6 +1,4 @@
 import styled from "styled-components/native";
-import { colors } from "../../styles/colors";
-
 
 export const Container = styled.View`
   flex-direction: row;
@@ -15,7 +13,7 @@ export const Minus = styled.TouchableOpacity`
   width: 38px;
   height: 38px;
   border-radius: 50px;
-  border: 1px solid ${colors.primary};
+  border: 1px solid ${({ theme }) => theme.colors.primary};
 `;
 
 export const Plus = styled.TouchableOpacity`
@@ -24,16 +22,16 @@ export const Plus = styled.TouchableOpacity`
   width: 38px;
   height: 38px;
   border-radius: 50px;
-  border: 1px solid ${colors.primary};
+  border: 1px solid ${({ theme }) => theme.colors.primary};
 `;
 
 export const Text = styled.Text`
-  color: ${colors.primary};
+  color: ${({ theme }) => theme.colors.primary};
   font-size: 50px;
   margin-top: -19px;
 `;
 
 export const Cont = styled.Text`
-  color: ${colors.primary};
+  color: ${({ theme }) => theme.colors.primary};
   font-size: 30px;
 `

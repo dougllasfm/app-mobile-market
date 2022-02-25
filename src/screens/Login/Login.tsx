@@ -1,8 +1,7 @@
 import { useState } from "react";
 import { TouchableOpacity } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-import { getAuth, onAuthStateChanged } from "firebase/auth";
-import { getLogin } from "../../utils/storage";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 
 import {
   Container,
@@ -18,37 +17,36 @@ import {
 
 export default function Login() {
   const navigation = useNavigation();
-  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const auth = getAuth();
 
   function handleLogin() {
-    onAuthStateChanged(auth, async (user) => {
-      if (user) {
-        // User is signed in, see docs for a list of available properties
-        // https://firebase.google.com/docs/reference/js/firebase.User
-        const uid = user.uid;
-        
-        
+    signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        // Signed in
+        const user = userCredential.user;
+        navigation.navigate("Meu mercado")
         // ...
-      } else {
-        console.log("teste")
-      }
-    });
+      })
+      .catch((error) => {
+        const errorMessage = error.message;
+        console.log(errorMessage)
+      });
   }
 
   return (
     <Container>
       <Title>Meu Mercado</Title>
       <SubTitle>Acesse sua conta</SubTitle>
-      <Input placeholder="Email" onChangeText={setName} value={name} />
+      <Input placeholder="Email" onChangeText={setEmail} value={email} />
       <Input placeholder="Senha" onChangeText={setPassword} value={password} />
       <Button onPress={() => handleLogin()}>
         <Text>Entrar</Text>
       </Button>
       <Description>
         <SigninText>Ainda não tem conta?</SigninText>
-        <TouchableOpacity onPress={() => navigation.navigate("Profile")}>
+        <TouchableOpacity onPress={() => navigation.navigate("Signin")}>
           <TextSignin>Criar conta</TextSignin>
         </TouchableOpacity>
       </Description>

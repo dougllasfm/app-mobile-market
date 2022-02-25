@@ -3,6 +3,12 @@
     "name": "app-mercado",
     "slug": "app-mercado",
     "version": "1.0.0",
+    "icon": "./src/assets/market.png",
+    "splash": {
+      "image": "./src/assets/market.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#FF6C44"
+    },
     "assetBundlePatterns": [
       "**/*"
     ]

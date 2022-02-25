@@ -1,4 +1,3 @@
-import { colors } from "./../../../styles/colors";
 import styled from "styled-components/native";
 
 export const Container = styled.View`
@@ -21,7 +20,7 @@ export const Name = styled.Text`
 `;
 
 export const Button = styled.TouchableOpacity`
-  background: ${colors.primary};
+  background: ${({ theme }) => theme.colors.primary};
   padding: 10px 5px;
   border-radius: 3px;
   margin-top: 5px;

@@ -1,6 +1,5 @@
 import { Platform } from "react-native";
 import styled from "styled-components/native";
-import { colors } from "../../styles/colors";
 
 export const Container = styled.ScrollView`
   background: #fff;
@@ -24,13 +23,13 @@ export const Search = styled.View`
 export const Input = styled.TextInput`
   height: 45px;
   width: 70%;
-  background: ${colors.gray};
+  background: ${({ theme }) => theme.colors.gray};
   border-radius: 25px;
   padding: 10px;
 `;
 
 export const ButtonSearch = styled.TouchableOpacity`
-  background: ${colors.primary};
+  background: ${({ theme }) => theme.colors.primary};
   justify-content: center;
   align-items: center;
   border-radius: 25px;

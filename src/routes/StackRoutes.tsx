@@ -1,3 +1,4 @@
+import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 const Stack = createNativeStackNavigator();
@@ -6,7 +7,7 @@ import Market from "../screens/Market/Market";
 import Order from "../screens/Order";
 import ProductDetails from "../screens/ProductDetails";
 import Requests from "../screens/Requests";
-import Profile from "../screens/Settings/Profile"
+import Profile from "../screens/Settings/Profile";
 import ConfirmationOrder from "../screens/ConfirmationOrder";
 import Signin from "../screens/Signin/Signin";
 import Login from "../screens/Login/Login";
@@ -64,15 +65,8 @@ const ProfileRoutes = () => {
   return (
     <Stack.Navigator>
       <Stack.Screen
-        name="Login"
-        component={Login}
-        options={{
-          headerShown: false,
-        }}
-      />
-      <Stack.Screen
         name="Profile"
-        component={Signin}
+        component={Profile}
         options={{
           headerShown: false,
         }}
@@ -80,5 +74,6 @@ const ProfileRoutes = () => {
     </Stack.Navigator>
   );
 };
+
 
 export { HomeRoutes, OrderRoutes, ProfileRoutes };
