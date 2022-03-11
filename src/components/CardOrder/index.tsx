@@ -1,5 +1,3 @@
-import { useNavigation } from "@react-navigation/native";
-
 import {
   Container,
   Image,
@@ -11,8 +9,7 @@ import {
   Date,
 } from "./styles";
 
-function CardOrder() {
-  const navigation = useNavigation();
+function CardOrder({navigation}: any) {
 
   return (
     <Container

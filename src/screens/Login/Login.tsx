@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { TouchableOpacity } from "react-native";
-import { useNavigation } from "@react-navigation/native";
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { storeLogin } from "../../utils/storage";
+import axios from "axios";
 
 import {
   Container,
@@ -15,24 +15,24 @@ import {
   TextSignin,
 } from "./styles";
 
-export default function Login() {
-  const navigation = useNavigation();
+interface Props {
+  navigation: any;
+}
+
+export default function Login({ navigation }: Props) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const auth = getAuth();
 
-  function handleLogin() {
-    signInWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        // Signed in
-        const user = userCredential.user;
-        navigation.navigate("Meu mercado")
-        // ...
+  async function handleLogin() {
+    try {
+      const res = await axios.post("http://192.168.2.7:3060/authenticateUser", {
+        email: email,
+        password: password,
       })
-      .catch((error) => {
-        const errorMessage = error.message;
-        console.log(errorMessage)
-      });
+      navigation.navigate("Meu mercado")
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   return (

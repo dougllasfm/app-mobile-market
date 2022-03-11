@@ -13,5 +13,5 @@ export const ButtonText = styled.TouchableOpacity`
 
 export const Text = styled.Text`
   color: #fff;
-  font-weight: bold;
+  font-family: ${({ theme }) => theme.fonts.title};
 `;

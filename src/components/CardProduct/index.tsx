@@ -2,8 +2,8 @@ import { View } from "react-native";
 import { useContext, useState } from "react";
 import { CartContext } from "../../contexts/CartContext";
 import { Image } from "react-native";
-import { useNavigation } from "@react-navigation/native";
 import { AntDesign } from "@expo/vector-icons";
+import { useTheme } from "styled-components";
 
 import {
   Container,
@@ -19,12 +19,12 @@ import {
   Cont,
   Quantity,
 } from "./styles";
-import { colors } from "../../styles/colors";
 
-function CardProduct() {
+
+function CardProduct({navigation}: any) {
+  const theme = useTheme()
   const { addCart, removeCart } = useContext(CartContext);
   const [cartCont, setCardCont] = useState(0);
-  const navigation = useNavigation();
 
   function SetCart() {
     setCardCont(cartCont + 1);
@@ -70,14 +70,14 @@ function CardProduct() {
                 <AntDesign
                   name="minussquare"
                   size={28}
-                  color={colors.primary}
+                  color={theme.colors.primary}
                 />
               </View>
             </Minus>
             <Cont>{cartCont}</Cont>
             <Plus onPress={() => SetCart()}>
               <View>
-                <AntDesign name="plussquare" size={28} color={colors.primary} />
+                <AntDesign name="plussquare" size={28} color={theme.colors.primary} />
               </View>
             </Plus>
           </PlusMinus>

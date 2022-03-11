@@ -42,9 +42,11 @@ export const TextButton = styled.Text`
   font-weight: bold;
 `;
 
-export const Line = styled.View`
-  width: 100%;
-  height: 1px;
-  background: #b9b9b9;
-  margin-top: 5px;
+export const Status = styled.View`
+  align-items: center;
+`
+
+export const Text = styled.Text`
+  font-size: 18px;
+  font-family: ${({ theme }) => theme.fonts.title};
 `

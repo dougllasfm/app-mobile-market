@@ -1,11 +1,40 @@
+import { useEffect, useState } from "react";
 import { Alert } from "react-native";
 import Market from "../../components/Market";
 import Header from "../../components/Header";
 import { Ionicons } from "@expo/vector-icons";
 
-import { Container, Search, Input, ButtonSearch, TextButton } from "./styles";
+import {
+  Container,
+  Search,
+  Input,
+  ButtonSearch,
+  TextButton,
+  Status,
+  Text,
+} from "./styles";
+
+type MarketData = {
+  nameCompany: string;
+  addressCompany: string;
+  taxMinimum: string;
+  buyMinimum: string;
+  hourInitial: string;
+  hourFinal: string;
+};
 
 export default function Home() {
+  const [markets, setMarkets] = useState<MarketData[]>();
+  const [status, setStatus] = useState(0);
+
+  useEffect(() => {
+    loadData();
+  }, [markets]);
+
+  async function loadData() {
+    setStatus(1);
+  }
+
   return (
     <Container>
       <Header title={"Mercados"} />
@@ -17,24 +46,26 @@ export default function Home() {
           </TextButton>
         </ButtonSearch>
       </Search>
-      <Market
-        name="Nilo"
-        address="Rua tal"
-        taxa="12,00"
-        min="5,00"
-        status={true}
-        hourInitial="10:00"
-        hourFinal="19:00"
-      />
-      <Market
-        name="Atacadão"
-        address="Avenida"
-        taxa="5,00"
-        min="5,00"
-        status={false}
-        hourInitial="08:00"
-        hourFinal="19:00"
-      />
+      {status == 0 && (
+        <Status>
+          <Text>Carregando mercados...</Text>
+        </Status>
+      )}
+
+      {markets?.map((item) => {
+        return (
+          <Market
+            key={item.nameCompany}
+            name={item.nameCompany}
+            address={item.addressCompany}
+            taxa={item.taxMinimum}
+            min={item.buyMinimum}
+            status={true}
+            hourInitial={item.hourInitial}
+            hourFinal={item.hourFinal}
+          />
+        );
+      })}
     </Container>
   );
 }

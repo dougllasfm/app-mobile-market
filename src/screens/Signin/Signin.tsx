@@ -1,7 +1,6 @@
 import { useState } from "react";
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { TouchableOpacity } from "react-native";
-import { storeLogin, getLogin } from "../../utils/storage";
+import { storeLogin } from "../../utils/storage";
 
 import {
   Container,
@@ -13,6 +12,7 @@ import {
   Text,
   TextLogin,
 } from "./styles";
+import axios from "axios";
 
 interface Props {
   navigation: any;
@@ -22,24 +22,24 @@ export default function Signin({ navigation }: Props) {
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
-  const auth = getAuth();
+  const [address, setAddress] = useState("");
+  const [telephone, setTelephone] = useState("");
 
 
-  function handleNewAccount() {
-    createUserWithEmailAndPassword(auth, email, password)
-      .then(async (userCredential) => {
-        // Signed in
-        const user = userCredential.user;
-        await storeLogin(name)
-        // ...
-      })
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        console.log(errorCode)
-        console.log(errorMessage)
-        // ..
-      });
+  async function handleNewAccount() {
+    try {
+      const res = await axios.post("http://192.168.2.7:3060/createUser", {
+        name: name,
+        password: password,
+        email: email,
+        address: address,
+        telephone: telephone
+      })  
+      navigation.navigate("Meu mercado")
+    } catch (error) {
+      console.log("ESTOU AQ")
+      console.log(error)
+    }
   }
 
   return (
@@ -49,6 +49,8 @@ export default function Signin({ navigation }: Props) {
       <Input placeholder="Nome" onChangeText={setName} value={name} />
       <Input placeholder="Email" onChangeText={setEmail} value={email} />
       <Input placeholder="Senha" onChangeText={setPassword} value={password} />
+      <Input placeholder="Endereço" onChangeText={setAddress} value={address} />
+      <Input placeholder="Telefone" onChangeText={setTelephone} value={telephone} />
       <Button onPress={() => handleNewAccount()}>
         <Text>Criar minha conta</Text>
       </Button>

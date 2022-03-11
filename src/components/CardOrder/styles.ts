@@ -10,9 +10,9 @@ export const Container = styled.TouchableOpacity`
 `;
 
 export const Image = styled.Image`
-  height: 38;
-  width: 38;
-  border-radius: 40;
+  height: 38px;
+  width: 38px;
+  border-radius: 40px;
   margin-right: 10px;
 `;
 

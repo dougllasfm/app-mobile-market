@@ -5,6 +5,7 @@ export const Container = styled.View`
   justify-content: center;
   align-items: center;
   flex: 1;
+  font-family: ${({ theme }) => theme.fonts.title};
 `;
 
 export const Image = styled.Image`

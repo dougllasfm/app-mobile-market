@@ -1,4 +1,5 @@
 import styled from "styled-components/native";
+import { RFPercentage } from "react-native-responsive-fontsize";
 
 type Props = {
   status: boolean
@@ -36,9 +37,9 @@ export const Details = styled.View`
 
 export const NameMarket = styled.Text`
   color: ${({ theme }) => theme.colors.darkBlue};
-  font-size: 18px;
+  font-size: ${RFPercentage(3.4)}px;
   margin-bottom: 2px;
-  font-weight: bold;
+  font-family: ${({ theme }) => theme.fonts.title};
 `;
 
 export const ViewHours = styled.View`
@@ -49,13 +50,15 @@ export const ViewHours = styled.View`
 export const Hours = styled.Text`
   color: ${({ theme }) => theme.colors.darkBlue};
   font-weight: bold;
-  font-size: 14px;
+  font-size: ${RFPercentage(2.4)}px;
+  font-family: ${({ theme }) => theme.fonts.text};
 `;
 
 export const Status = styled.Text<Props>`
   color: ${(props) => (props.status ? ({ theme }) => theme.colors.green : ({ theme }) => theme.colors.red )};
-  font-size: 14px;
+  font-size: ${RFPercentage(2.2)}px;
   margin-left: 6px;
+  font-family: ${({ theme }) => theme.fonts.text};
 `
 
 export const Rate = styled.View`
@@ -69,6 +72,7 @@ export const Tax = styled.View`
 export const TextTax = styled.Text`
   margin: 0 5px;
   color: ${({ theme }) => theme.colors.darkGray};
-  font-size: 14px;
+  font-size: ${RFPercentage(2.4)}px;
+  font-family: ${({ theme }) => theme.fonts.text};
 `;
 

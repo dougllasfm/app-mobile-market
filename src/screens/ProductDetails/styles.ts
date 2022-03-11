@@ -4,13 +4,38 @@ import styled from "styled-components/native";
 export const Container = styled.View`
   background: #fff;
   flex: 1;
-  margin-top: ${Platform.OS === "android" ? 24+'px' : 0};
+  margin-top: ${Platform.OS === "android" ? 24 + "px" : 0};
 `;
 
 export const Content = styled.View`
   justify-content: center;
   align-items: center;
   margin: 5px auto;
+`;
+
+export const NameProduct = styled.Text`
+  color: ${({ theme }) => theme.colors.darkBlue};
+  font-family: ${({ theme }) => theme.fonts.title};
+  font-size: 16px;
+  margin-bottom: 3px;
+  margin-top: 2px;
+`;
+
+export const Weight = styled.Text`
+  color: ${({ theme }) => theme.colors.darkGray};
+  font-family: ${({ theme }) => theme.fonts.text};
+`;
+
+export const Price = styled.Text`
+  color: ${({ theme }) => theme.colors.green};
+  font-family: ${({ theme }) => theme.fonts.text};
+`;
+
+export const Description = styled.Text`
+  color: ${({ theme }) => theme.colors.darkGray};
+  font-family: ${({ theme }) => theme.fonts.text};
+  text-align: center;
+  width: 280px;
 `;
 
 export const Details = styled.View`

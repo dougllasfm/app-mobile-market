@@ -1,5 +1,10 @@
 import { Platform } from "react-native";
 import styled from "styled-components/native";
+import { RFPercentage } from "react-native-responsive-fontsize";
+
+type Props = {
+  status: boolean
+}
 
 export const Container = styled.ScrollView`
   background: #fff;
@@ -27,15 +32,16 @@ export const ViewNameAndSatus = styled.View`
 `
 
 export const NameCompany = styled.Text`
-  font-size: 16px;
+  font-size: ${RFPercentage(2.8)}px;
   color: ${({ theme }) => theme.colors.darkBlue};
-  font-weight: bold;
+  font-family: ${({ theme }) => theme.fonts.title};
 `;
 
-export const Status = styled.Text`
-  font-size: 14px;
-  color: ${({ theme }) => theme.colors.green};
+export const Status = styled.Text<Props>`
+  font-size: ${RFPercentage(2.2)}px;
+  color: ${(props) => (props.status ? ({ theme }) => theme.colors.green : ({ theme }) => theme.colors.red )};
   margin-left: 5px;
+  font-family: ${({ theme }) => theme.fonts.text};
 `
 
 export const Options = styled.ScrollView.attrs({
@@ -54,7 +60,8 @@ export const InfosMarket = styled.View`
 
 export const Address = styled.Text`
   color: ${({ theme }) => theme.colors.darkGray};
-  font-size: 14px;  
+  font-size: ${RFPercentage(2.4)}px;
+  font-family: ${({ theme }) => theme.fonts.text};
 `;
 
 export const TaxView = styled.View`
@@ -64,6 +71,7 @@ export const TaxView = styled.View`
 
 export const TextTax = styled.Text`
   margin-left: 3px;
+  font-size: ${RFPercentage(2.3)}px;
   color: ${({ theme }) => theme.colors.darkGray2};
 `;
 
@@ -81,6 +89,7 @@ export const Input = styled.TextInput`
   border-radius: 25px;
   height: 45px;
   background: ${({ theme }) => theme.colors.gray};
+  font-family: ${({ theme }) => theme.fonts.text};
 `;
 
 export const ButtonSearch = styled.TouchableOpacity`

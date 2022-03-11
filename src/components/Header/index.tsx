@@ -2,6 +2,9 @@ import { useContext } from "react";
 import { useNavigation } from "@react-navigation/native";
 import { Image, TouchableOpacity } from "react-native";
 import { Feather } from "@expo/vector-icons";
+import { CartContext } from "../../contexts/CartContext";
+import { useTheme } from "styled-components";
+
 import {
   Container,
   Text,
@@ -10,14 +13,13 @@ import {
   CartNumber,
   Line,
 } from "./styles";
-import { CartContext } from "../../contexts/CartContext";
-import { colors } from "../../styles/colors";
 
 interface Props {
   title: string;
 }
 
 function Header({title }: Props) {
+  const theme = useTheme()
   const navigation = useNavigation();
   const { cart } = useContext(CartContext);
 
@@ -39,7 +41,7 @@ function Header({title }: Props) {
           <ViewCartNumber>
             <CartNumber>{cart}</CartNumber>
           </ViewCartNumber>
-          <Feather name="shopping-cart" size={28} color={colors.primary} />
+          <Feather name="shopping-cart" size={28} color={theme.colors.primary} />
         </Cart>
       </Container>
       <Line />

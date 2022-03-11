@@ -2,11 +2,13 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
 import { HomeRoutes, OrderRoutes, ProfileRoutes } from "./StackRoutes";
 import { MaterialIcons, AntDesign } from "@expo/vector-icons";
-import { colors } from "../styles/colors";
+import { useTheme } from "styled-components";
 
 const Tab = createBottomTabNavigator();
 
 const TabNavigator = () => {
+  const theme = useTheme()
+
   return (
     <Tab.Navigator 
       screenOptions={{
@@ -28,7 +30,7 @@ const TabNavigator = () => {
           tabBarIcon: ({ focused, size }) => (
             <MaterialIcons
               name="store"
-              color={focused ? colors.primary : colors.darkBlue}
+              color={focused ? theme.colors.primary : theme.colors.darkBlue}
               size={size}
             />
           ),
@@ -41,7 +43,7 @@ const TabNavigator = () => {
           tabBarIcon: ({ focused, size }) => (
             <MaterialIcons
               name="request-page"
-              color={focused ? colors.primary : colors.darkBlue}
+              color={focused ? theme.colors.primary : theme.colors.darkBlue}
               size={size}
             />
           ),
@@ -54,7 +56,7 @@ const TabNavigator = () => {
           tabBarIcon: ({ focused, size }) => (
             <AntDesign
               name="user"
-              color={focused ? colors.primary : colors.darkBlue}
+              color={focused ? theme.colors.primary : theme.colors.darkBlue}
               size={size}
             />
           ),

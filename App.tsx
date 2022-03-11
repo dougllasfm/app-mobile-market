@@ -2,36 +2,33 @@ import "react-native-gesture-handler";
 import { StatusBar } from "expo-status-bar";
 import Routes from "./src/routes/Routes";
 import LoginRoutesStack from "./src/routes/LoginRoutesStack";
+import AppLoading from "expo-app-loading";
 import CartContextProvider from "./src/contexts/CartContext";
-import { useEffect, useState } from "react";
-import { getLogin } from "./src/utils/storage";
 import { ThemeProvider } from "styled-components";
-import theme from "./src/theme/index"
+import {
+  useFonts,
+  Roboto_400Regular,
+  Roboto_700Bold,
+} from "@expo-google-fonts/roboto";
+import theme from "./src/theme/index";
 
 import "./src/services/firebase";
 
 export default function App() {
-  const [userLogin, setUserLogin] = useState<boolean>(true);
+  const [fontsLoaded] = useFonts({
+    Roboto_400Regular,
+    Roboto_700Bold,
+  });
 
-  useEffect(() => {
-    async function storageLogin() {
-      const value = await getLogin();
-      if (value == null || value == undefined) {
-        setUserLogin(false);
-      }
-    }
-
-    storageLogin();
-  }, []);
-
+  if (!fontsLoaded) {
+    return <AppLoading />;
+  }
   return (
-    <>
-      <CartContextProvider>
-        <ThemeProvider theme={theme}>
-        {userLogin ? <LoginRoutesStack /> : <Routes />}
-        <StatusBar style="dark" />
-        </ThemeProvider>
-      </CartContextProvider>
-    </>
+    <CartContextProvider>
+      <ThemeProvider theme={theme}>
+        <LoginRoutesStack />
+        <StatusBar style="dark" translucent backgroundColor="transparent" />
+      </ThemeProvider>
+    </CartContextProvider>
   );
 }

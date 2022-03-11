@@ -12,21 +12,19 @@ const firebaseConfig = {
   measurementId: "G-L3HHHFRZXR",
 };
 
-async function create() {
-  try {
-    const docRef = await addDoc(collection(db, "users"), {
-      first: "Ada",
-      last: "Lovelace",
-      born: 1815,
-    });
-    console.log("Document written with ID: ", docRef.id);
-  } catch (e) {
-    console.error("Error adding document: ", e);
-  }
-}
+// async function create() {
+//   try {
+//     const docRef = await addDoc(collection(db, "users"), {
+//       first: "Ada",
+//       last: "Lovelace",
+//       born: 1815,
+//     });
+//     console.log("Document written with ID: ", docRef.id);
+//   } catch (e) {
+//     console.error("Error adding document: ", e);
+//   }
+// }
 
 // Initialize Firebase
 initializeApp(firebaseConfig);
 const db = getFirestore();
-
-create()

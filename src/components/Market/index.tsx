@@ -1,6 +1,6 @@
 import { useNavigation } from "@react-navigation/native";
-
 import { MaterialIcons, AntDesign, Feather } from "@expo/vector-icons";
+import { useTheme } from "styled-components";
 
 import {
   ImageView,
@@ -15,7 +15,6 @@ import {
   Tax,
   TextTax,
 } from "./styles";
-import { colors } from "../../styles/colors";
 
 type MarketProps = {
   name: string;
@@ -29,6 +28,7 @@ type MarketProps = {
 
 function Market(props: MarketProps) {
   const navigation = useNavigation();
+  const theme = useTheme()
 
   return (
     <>
@@ -69,7 +69,7 @@ function Market(props: MarketProps) {
             <Feather
               name="clock"
               size={14}
-              color={colors.darkBlue}
+              color={theme.colors.darkBlue}
               style={{
                 marginRight: 3,
               }}

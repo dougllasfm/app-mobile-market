@@ -1,4 +1,5 @@
 import styled from "styled-components/native";
+import { RFPercentage } from "react-native-responsive-fontsize";
 
 export const Container = styled.View`
   flex-direction: row;
@@ -24,14 +25,15 @@ export const DetailsProduct = styled.View`
 `;
 
 export const TitleProduct = styled.Text`  
-  font-size: 16px;
+  font-size: ${RFPercentage(2.8)}px;
   color: ${({ theme }) => theme.colors.darkBlue};
-  font-weight: bold;
+  font-family: ${({ theme }) => theme.fonts.title};
 `;
 
 export const Price = styled.Text`
   color: ${({ theme }) => theme.colors.primary};
-  font-weight: bold;
+  font-family: ${({ theme }) => theme.fonts.title};
+  font-size: ${RFPercentage(2.5)}px;
 `;
 
 export const Actions = styled.View`
@@ -61,12 +63,14 @@ export const Plus = styled.TouchableWithoutFeedback`
 export const Cont = styled.Text`
   color: ${({ theme }) => theme.colors.primary};
   font-size: 20px;
-  font-weight: bold;
+  font-family: ${({ theme }) => theme.fonts.title};
   margin: 0 5px;
 `
 
 export const Quantity = styled.Text`
+  font-size: ${RFPercentage(2.5)}px;
   color: ${({ theme }) => theme.colors.darkGray};
+  font-family: ${({ theme }) => theme.fonts.text};
 `;
 
 

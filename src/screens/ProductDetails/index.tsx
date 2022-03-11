@@ -1,24 +1,27 @@
 import { useState } from "react";
 import { Image, Text } from "react-native";
 import Header from "../../components/Header";
-import { Line } from "../../components/Market/styles";
 import PlusMinus from "../../components/PlusMinus";
 
 import {
   Container,
   Content,
+  NameProduct,
+  Weight,
+  Price,
+  Description,
   Details,
   Confirmation,
   Button,
-  ViewButton
+  ViewButton,
 } from "./styles";
 
-function ProductDetails({ navigation }: any) {
+function ProductDetails() {
   const [cart, setCart] = useState(0);
 
   return (
     <Container>
-      <Header navigation={navigation} title={"Nome do produto"} />
+      <Header title={"Nome do produto"} />
       <Content>
         <Image
           style={{
@@ -31,47 +34,20 @@ function ProductDetails({ navigation }: any) {
             uri: "http://s2.glbimg.com/P6Nn4AXYPq-K1Xek4cCKyONYYyA=/e.glbimg.com/og/ed/f/original/2014/01/15/cafe.jpg",
           }}
         />
-        <Text
-          style={{
-            color: "#3a3a3a",
-            fontSize: 16,
-            marginBottom: 3,
-            marginTop: 2,
-          }}
-        >
-          Café Pilão Torrado
-        </Text>
+        <NameProduct>Café Pilão Torrado</NameProduct>
         <Details>
-          <Text
-            style={{
-              color: "#8f8f8f",
-            }}
-          >
-            500g
-          </Text>
-          <Text
-            style={{
-              color: "green",
-            }}
-          >
-            R$ 15,00
-          </Text>
+          <Weight>500g</Weight>
+          <Price>R$ 15,00</Price>
         </Details>
-        <Text
-          style={{
-            color: "#8f8f8f",
-            width: 280,
-            textAlign: "center",
-          }}
-        >
+        <Description>
           Contrary to popular belief, Lorem Ipsum is not simply random text. It
           has roots in a piece of classical Latin literature from 45 BC
-        </Text>
+        </Description>
       </Content>
 
       <Confirmation>
         <ViewButton>
-          <PlusMinus cont={0}/>
+          <PlusMinus cont={0} />
           <Button>
             <Text
               style={{

@@ -40,7 +40,7 @@ export default function Market({ navigation, route }: any) {
           <ViewInfosCompany>
             <ViewNameAndSatus>
               <NameCompany>{route.params.name}</NameCompany>
-              <Status>{route.params.status}</Status>
+              <Status status={route.params.status}>{route.params.status ? "Aberto" : "Fechado"}</Status>
             </ViewNameAndSatus>
             <Address>{route.params.address}</Address>
           </ViewInfosCompany>

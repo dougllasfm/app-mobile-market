@@ -23,7 +23,7 @@ import {
 function Order({ navigation }: any) {
   return (
     <Container>
-      <Header navigation={navigation} title={"Pedido 5458"} />
+      <Header title={"Pedido 5458"} />
       <DetailsOrder>
         <NameMarket>Pão de açucar</NameMarket>
         <Address>Av. Central, 458, Querência</Address>

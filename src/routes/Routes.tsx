@@ -5,10 +5,12 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import CustomDrawer from "../components/CustomDrawer";
 
 import TabNavigator from "./TabNavigator";
-import { colors } from "../styles/colors";
+import { useTheme } from 'styled-components/native';
 const Drawer = createDrawerNavigator();
 
 export default function Routes() {
+  const theme = useTheme()
+
   return (
     <NavigationContainer>
       <Drawer.Navigator
@@ -16,14 +18,14 @@ export default function Routes() {
         screenOptions={{
           drawerStyle: {
             flex: 1,
-            backgroundColor: colors.primary,
+            backgroundColor: theme.colors.primary,
           },
           drawerLabelStyle: {
             fontSize: 15,
             marginLeft: -25,
           },
           drawerActiveTintColor: "#fff",
-          drawerActiveBackgroundColor: colors.transparentPrimray,
+          drawerActiveBackgroundColor: theme.colors.transparentPrimray,
           drawerInactiveTintColor: "#fff",
           headerShown: false,
         }}

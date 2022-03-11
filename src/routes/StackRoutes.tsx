@@ -1,4 +1,3 @@
-import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 const Stack = createNativeStackNavigator();
@@ -8,9 +7,6 @@ import Order from "../screens/Order";
 import ProductDetails from "../screens/ProductDetails";
 import Requests from "../screens/Requests";
 import Profile from "../screens/Settings/Profile";
-import ConfirmationOrder from "../screens/ConfirmationOrder";
-import Signin from "../screens/Signin/Signin";
-import Login from "../screens/Login/Login";
 
 const HomeRoutes = () => {
   return (
