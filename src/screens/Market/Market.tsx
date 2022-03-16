@@ -1,3 +1,5 @@
+import { useEffect, useState } from "react";
+import axios from "axios";
 import { Alert, Image } from "react-native";
 import { MaterialIcons, AntDesign, Ionicons } from "@expo/vector-icons";
 import Button from "../../components/Button";
@@ -23,70 +25,131 @@ import {
   ViewList,
 } from "./styles";
 
-export default function Market({ navigation, route }: any) {
+type CompanyProps = {
+  id: number
+  name: string;
+  address: string;
+  taxMinimum: string;
+  buyMinimum: string;
+  hourOpen: string;
+  hourClosed: string;
+};
+
+type ProductsProps = {
+  id: number
+  name: string;
+  price: string;
+  weight: string;
+  quantity: string;
+  description: string;
+  category: string;
+};
+
+export default function Market({ route }: any) {
+  const [company, setCompany] = useState<CompanyProps>();
+  const [products, setProducts] = useState<ProductsProps[]>([]);
+
+  useEffect(() => {
+    loadDataCompany();
+  }, []);
+
+  async function loadDataCompany() {
+    try {
+      const res = await axios.get(
+        "http://192.168.2.7:3060/company",
+        route.params.id
+      );
+      setProducts(res.data.products);
+      setCompany(res.data);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  function Resolve() {
+    if (company == null || company == undefined) {
+      return <Text>Carregando ...</Text>;
+    } else {
+      return (
+        <>
+          <Header title={company.name} />
+          <InfosMarket>
+            <ViewCompany>
+              <Image
+                source={require("../../assets/logo.png")}
+                style={{
+                  height: 38,
+                  width: 38,
+                  borderRadius: 40,
+                }}
+              />
+              <ViewInfosCompany>
+                <ViewNameAndSatus>
+                  <NameCompany>{company.name}</NameCompany>
+                  <Status status={true}>{true ? "Aberto" : "Fechado"}</Status>
+                </ViewNameAndSatus>
+                <Address>{company.address}</Address>
+              </ViewInfosCompany>
+            </ViewCompany>
+
+            <TaxView>
+              <MaterialIcons
+                name="attach-money"
+                size={18}
+                color="gray"
+                style={{
+                  marginRight: -5,
+                }}
+              />
+              <TextTax>Entrega R$ {company.taxMinimum}</TextTax>
+              <AntDesign
+                name="solution1"
+                size={18}
+                color="gray"
+                style={{
+                  marginLeft: 8,
+                }}
+              />
+              <TextTax>Compra mínima R$ {company.buyMinimum}</TextTax>
+            </TaxView>
+          </InfosMarket>
+          <Search>
+            <Input placeholder="Pesquisar produto" />
+            <ButtonSearch onPress={() => Alert.alert("Simple Button pressed")}>
+              <Text>
+                <Ionicons name="md-search-outline" size={24} color={"#fff"} />
+              </Text>
+            </ButtonSearch>
+          </Search>
+          <Options>
+            {products.map((item) => {
+              return <Button key={item.name} name={item.category} />;
+            })}
+          </Options>
+          <ViewList>
+            {products.map((item) => {
+              return (
+                <CardProduct
+                  key={item.name}
+                  id={item.id}
+                  name={item.name}
+                  price={item.price}
+                  quantity={item.quantity}
+                  weight={item.weight}
+                  description={item.description}
+                  idCompany={company.id}
+                />
+              );
+            })}
+          </ViewList>
+        </>
+      );
+    }
+  }
+
   return (
     <Container>
-      <Header title={"Nome do mercado"} />
-      <InfosMarket>
-        <ViewCompany>
-          <Image
-            source={require("../../assets/logo.png")}
-            style={{
-              height: 38,
-              width: 38,
-              borderRadius: 40,
-            }}
-          />
-          <ViewInfosCompany>
-            <ViewNameAndSatus>
-              <NameCompany>{route.params.name}</NameCompany>
-              <Status status={route.params.status}>{route.params.status ? "Aberto" : "Fechado"}</Status>
-            </ViewNameAndSatus>
-            <Address>{route.params.address}</Address>
-          </ViewInfosCompany>
-        </ViewCompany>
-
-        <TaxView>
-          <MaterialIcons
-            name="attach-money"
-            size={18}
-            color="gray"
-            style={{
-              marginRight: -5,
-            }}
-          />
-          <TextTax>Entrega R$ {route.params.taxa}</TextTax>
-          <AntDesign
-            name="solution1"
-            size={18}
-            color="gray"
-            style={{
-              marginLeft: 8,
-            }}
-          />
-          <TextTax>Compra mínima R$ {route.params.min}</TextTax>
-        </TaxView>
-      </InfosMarket>
-      <Search>
-        <Input placeholder="Pesquisar produto" />
-        <ButtonSearch onPress={() => Alert.alert("Simple Button pressed")}>
-          <Text>
-            <Ionicons name="md-search-outline" size={24} color={"#fff"} />
-          </Text>
-        </ButtonSearch>
-      </Search>
-      <Options>
-        <Button name={"Doces"} />
-        <Button name={"Carne"} />
-        <Button name={"Frutas"} />
-        <Button name={"Bebidas"} />
-      </Options>
-      <ViewList>
-        <CardProduct />
-        <CardProduct />
-        <CardProduct />
-        <CardProduct />
-      </ViewList>
+      <Resolve />
     </Container>
   );
 }

@@ -2,6 +2,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import Login from "../screens/Login/Login";
 import Signin from "../screens/Signin/Signin";
+import Routes from "./Routes";
 import TabNavigator from "./TabNavigator";
 
 const Stack = createStackNavigator();
@@ -26,7 +27,7 @@ function LoginRoutesStack() {
         />
         <Stack.Screen
           name="Meu mercado"
-          component={TabNavigator}
+          component={Routes}
           options={{
             headerShown: false,
           }}

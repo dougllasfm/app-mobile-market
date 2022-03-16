@@ -17,6 +17,7 @@ import {
 } from "./styles";
 
 type MarketProps = {
+  id: number
   name: string;
   address: string;
   min: string;
@@ -35,11 +36,7 @@ function Market(props: MarketProps) {
       <ViewImage
         onPress={() =>
           navigation.navigate("Market", {
-            name: props.name,
-            address: props.address,
-            taxa: props.taxa,
-            min: props.min,
-            status: props.status,
+            id: props.id
           })
         }
       >

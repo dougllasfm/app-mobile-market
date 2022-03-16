@@ -12,7 +12,6 @@ export default function Routes() {
   const theme = useTheme()
 
   return (
-    <NavigationContainer>
       <Drawer.Navigator
         drawerContent={(props) => <CustomDrawer props={props} />}
         screenOptions={{
@@ -44,6 +43,5 @@ export default function Routes() {
           }}
         />
       </Drawer.Navigator>
-    </NavigationContainer>
   );
 }

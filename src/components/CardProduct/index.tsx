@@ -4,6 +4,7 @@ import { CartContext } from "../../contexts/CartContext";
 import { Image } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
 import { useTheme } from "styled-components";
+import { useNavigation } from "@react-navigation/native";
 
 import {
   Container,
@@ -19,15 +20,35 @@ import {
   Cont,
   Quantity,
 } from "./styles";
+import { OrderContext } from "../../contexts/OrderContex";
 
+type ProductProps = {
+  id: number
+  name: string;
+  price: string;
+  quantity: string;
+  weight: string
+  description: string
+  idCompany: number
+};
 
-function CardProduct({navigation}: any) {
-  const theme = useTheme()
+function CardProduct({ id, name, price, quantity, weight, description, idCompany }: ProductProps) {
+  const theme = useTheme();
+  const navigation = useNavigation();
   const { addCart, removeCart } = useContext(CartContext);
+  const { addProductInOrder, order } = useContext(OrderContext)
   const [cartCont, setCardCont] = useState(0);
 
   function SetCart() {
-    setCardCont(cartCont + 1);
+    setCardCont(cartCont + 1);    
+    const data = {
+      id,
+      name,
+      price,
+      quantity: 1,
+      idCompany
+    }
+    addProductInOrder(data)
     addCart();
   }
 
@@ -44,7 +65,12 @@ function CardProduct({navigation}: any) {
         elevation: 2,
       }}
     >
-      <Link onPress={() => navigation.navigate("Product")}>
+      <Link onPress={() => navigation.navigate("Product", {
+        name,
+        price,
+        weight,
+        description
+      })}>
         <Image
           style={{
             width: 90,
@@ -59,11 +85,11 @@ function CardProduct({navigation}: any) {
       </Link>
       <AboutProduct>
         <DetailsProduct>
-          <TitleProduct>Café pilão</TitleProduct>
-          <Price>R$ 30,00</Price>
+          <TitleProduct>{name}</TitleProduct>
+          <Price>R$ {price}</Price>
         </DetailsProduct>
         <Actions>
-          <Quantity>3 unidades</Quantity>
+          <Quantity>{quantity} unidades</Quantity>
           <PlusMinus>
             <Minus onPress={() => (cartCont > 0 ? SetCartMinus() : 0)}>
               <View>
@@ -77,7 +103,11 @@ function CardProduct({navigation}: any) {
             <Cont>{cartCont}</Cont>
             <Plus onPress={() => SetCart()}>
               <View>
-                <AntDesign name="plussquare" size={28} color={theme.colors.primary} />
+                <AntDesign
+                  name="plussquare"
+                  size={28}
+                  color={theme.colors.primary}
+                />
               </View>
             </Plus>
           </PlusMinus>

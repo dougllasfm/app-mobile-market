@@ -10,7 +10,7 @@ export const Container = styled.View`
 `;
 
 export const DetailsProduct = styled.View`
-  margin-left: -20px;
+  margin-left: -100px;
 `;
 
 export const Name = styled.Text`

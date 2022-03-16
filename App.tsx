@@ -1,9 +1,9 @@
 import "react-native-gesture-handler";
 import { StatusBar } from "expo-status-bar";
-import Routes from "./src/routes/Routes";
 import LoginRoutesStack from "./src/routes/LoginRoutesStack";
 import AppLoading from "expo-app-loading";
 import CartContextProvider from "./src/contexts/CartContext";
+import OrderContextProvider from "./src/contexts/OrderContex";
 import { ThemeProvider } from "styled-components";
 import {
   useFonts,
@@ -25,10 +25,12 @@ export default function App() {
   }
   return (
     <CartContextProvider>
-      <ThemeProvider theme={theme}>
-        <LoginRoutesStack />
-        <StatusBar style="dark" translucent backgroundColor="transparent" />
-      </ThemeProvider>
+      <OrderContextProvider>
+        <ThemeProvider theme={theme}>
+          <LoginRoutesStack />
+          <StatusBar style="dark" translucent backgroundColor="transparent" />
+        </ThemeProvider>
+      </OrderContextProvider>
     </CartContextProvider>
   );
 }

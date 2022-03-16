@@ -3,9 +3,11 @@ import { Container, DetailsProduct, Name, Quantity, Price } from "./styles";
 
 type ProductOrderProps = {
   name: string;
+  price: string
+  quantity: number
 };
 
-function ProductOrder({ name }: ProductOrderProps) {
+function ProductOrder({ name, quantity, price }: ProductOrderProps) {
   return (
     <Container>
       <Image
@@ -21,9 +23,9 @@ function ProductOrder({ name }: ProductOrderProps) {
       />
       <DetailsProduct>
         <Name>{name} - 500g</Name>
-        <Quantity>02 x R$ 15,00</Quantity>
+        <Quantity>{quantity} x R$ {price}</Quantity>
       </DetailsProduct>
-      <Price>R$ 30,00</Price>
+      <Price>R$ {price}</Price>
     </Container>
   );
 }

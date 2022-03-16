@@ -16,12 +16,13 @@ import {
   ViewButton,
 } from "./styles";
 
-function ProductDetails() {
+
+function ProductDetails({route}) {
   const [cart, setCart] = useState(0);
 
   return (
     <Container>
-      <Header title={"Nome do produto"} />
+      <Header title={route.params.name} />
       <Content>
         <Image
           style={{
@@ -34,14 +35,13 @@ function ProductDetails() {
             uri: "http://s2.glbimg.com/P6Nn4AXYPq-K1Xek4cCKyONYYyA=/e.glbimg.com/og/ed/f/original/2014/01/15/cafe.jpg",
           }}
         />
-        <NameProduct>Café Pilão Torrado</NameProduct>
+        <NameProduct>{route.params.name}</NameProduct>
         <Details>
-          <Weight>500g</Weight>
-          <Price>R$ 15,00</Price>
+          <Weight>{route.params.weight}</Weight>
+          <Price>R$ {route.params.price}</Price>
         </Details>
         <Description>
-          Contrary to popular belief, Lorem Ipsum is not simply random text. It
-          has roots in a piece of classical Latin literature from 45 BC
+          {route.params.description}
         </Description>
       </Content>
 

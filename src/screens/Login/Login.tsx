@@ -28,10 +28,11 @@ export default function Login({ navigation }: Props) {
       const res = await axios.post("http://192.168.2.7:3060/authenticateUser", {
         email: email,
         password: password,
-      })
-      navigation.navigate("Meu mercado")
+      });
+      storeLogin(res.data.userAlreadyExists.id)
+      navigation.navigate("Meu mercado");
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
   }
 

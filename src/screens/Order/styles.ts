@@ -5,7 +5,7 @@ import styled from "styled-components/native";
 export const Container = styled.ScrollView`
   background: #fff;
   flex: 1;
-  margin-top: ${Platform.OS === "android" ? 24+'px' : 0};
+  margin-top: ${Platform.OS === "android" ? 24 + "px" : 0};
 `;
 
 export const DetailsOrder = styled.View`
@@ -90,4 +90,22 @@ export const Title = styled.Text`
 export const AddressDelivery = styled.Text`
   font-size: ${RFPercentage(2.8)}px;
   color: ${({ theme }) => theme.colors.darkGray};
+`;
+
+export const ButtonConfirmView = styled.TouchableOpacity`
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+  margin-bottom: 8px;
+`;
+
+export const ButtonConfirm = styled.Text`
+  background-color: #fff;
+  text-align: center;
+  width: 200px;
+  padding: 6px;
+  border-radius: 3px;
+  font-size: 16px;
+  color: ${({ theme }) => theme.colors.primary};
+  border: 1px solid ${({ theme }) => theme.colors.primary};
 `;

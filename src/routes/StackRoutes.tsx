@@ -40,15 +40,15 @@ const OrderRoutes = () => {
   return (
     <Stack.Navigator>
       <Stack.Screen
-        name="Requests"
-        component={Requests}
+        name="Order"
+        component={Order}
         options={{
           headerShown: false,
         }}
       />
       <Stack.Screen
-        name="Order"
-        component={Order}
+        name="Requests"
+        component={Requests}
         options={{
           headerShown: false,
         }}

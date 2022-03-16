@@ -13,14 +13,16 @@ import {
   Status,
   Text,
 } from "./styles";
+import axios from "axios";
 
 type MarketData = {
-  nameCompany: string;
-  addressCompany: string;
+  id: number
+  name: string;
+  address: string;
   taxMinimum: string;
   buyMinimum: string;
-  hourInitial: string;
-  hourFinal: string;
+  hourOpen: string;
+  hourClosed: string;
 };
 
 export default function Home() {
@@ -29,10 +31,12 @@ export default function Home() {
 
   useEffect(() => {
     loadData();
-  }, [markets]);
+  }, []);
 
   async function loadData() {
+    const res = await axios.get("http://192.168.2.7:3060/companys")
     setStatus(1);
+    setMarkets(res.data)
   }
 
   return (
@@ -55,14 +59,15 @@ export default function Home() {
       {markets?.map((item) => {
         return (
           <Market
-            key={item.nameCompany}
-            name={item.nameCompany}
-            address={item.addressCompany}
+            key={item.id}
+            id={item.id}
+            name={item.name}
+            address={item.address}
             taxa={item.taxMinimum}
             min={item.buyMinimum}
             status={true}
-            hourInitial={item.hourInitial}
-            hourFinal={item.hourFinal}
+            hourInitial={item.hourOpen}
+            hourFinal={item.hourClosed}
           />
         );
       })}
