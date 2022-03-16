@@ -9,8 +9,16 @@ import {
   Date,
 } from "./styles";
 
-function CardOrder({navigation}: any) {
+type OrdersProps = {
+  nameMarket: string
+  addressUser: string
+  orderId: number
+  quantity: number
+  navigation: any
+}
 
+function CardOrder(props: OrdersProps) {
+  
   return (
     <Container
       style={{
@@ -22,14 +30,14 @@ function CardOrder({navigation}: any) {
         shadowRadius: 3.5,
         elevation: 2,
       }}
-      onPress={() => navigation.navigate("Order")}
+      onPress={() => props.navigation.navigate("Order")}
     >
       <Image source={require("../../assets/logo.png")} />
       <Details>
-        <NameMarket>Pão de açucar</NameMarket>
-        <Order>Pedido 5458</Order>
-        <Address>Av. Norte, 745</Address>
-        <Buy>R$ 450,00 - 5 itens</Buy>
+        <NameMarket>{props.nameMarket}</NameMarket>
+        <Order>Pedido nº {props.orderId}</Order>
+        <Address>{props.addressUser}</Address>
+        <Buy>R$ 450,00 - {props.quantity} itens</Buy>
         <Date>17/02/2022</Date>
       </Details>
     </Container>

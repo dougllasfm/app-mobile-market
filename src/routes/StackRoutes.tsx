@@ -40,15 +40,22 @@ const OrderRoutes = () => {
   return (
     <Stack.Navigator>
       <Stack.Screen
-        name="Order"
-        component={Order}
+        name="Requests"
+        component={Requests}
         options={{
           headerShown: false,
         }}
       />
+    </Stack.Navigator>
+  );
+};
+
+const CartRoutes = () => {
+  return (
+    <Stack.Navigator>
       <Stack.Screen
-        name="Requests"
-        component={Requests}
+        name="Order"
+        component={Order}
         options={{
           headerShown: false,
         }}
@@ -71,5 +78,4 @@ const ProfileRoutes = () => {
   );
 };
 
-
-export { HomeRoutes, OrderRoutes, ProfileRoutes };
+export { HomeRoutes, OrderRoutes, ProfileRoutes, CartRoutes };

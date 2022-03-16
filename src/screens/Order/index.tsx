@@ -32,6 +32,7 @@ function Order({ navigation }: any) {
 
   async function handleSubmitOrder() {
     try {
+      console.log(order)
       let arrayProducts: number[] = [];
       let company = null;
       let user = parseInt(await getLogin());
@@ -78,6 +79,7 @@ function Order({ navigation }: any) {
       {order.map((item) => {
         return (
           <ProductOrder
+            key={item.key}
             name={item.name}
             price={item.price}
             quantity={item.quantity}

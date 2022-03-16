@@ -1,16 +1,21 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
-import { HomeRoutes, OrderRoutes, ProfileRoutes } from "./StackRoutes";
+import {
+  HomeRoutes,
+  OrderRoutes,
+  ProfileRoutes,
+  CartRoutes,
+} from "./StackRoutes";
 import { MaterialIcons, AntDesign } from "@expo/vector-icons";
 import { useTheme } from "styled-components";
 
 const Tab = createBottomTabNavigator();
 
 const TabNavigator = () => {
-  const theme = useTheme()
+  const theme = useTheme();
 
   return (
-    <Tab.Navigator 
+    <Tab.Navigator
       screenOptions={{
         headerShown: false,
         tabBarShowLabel: false,
@@ -30,6 +35,19 @@ const TabNavigator = () => {
           tabBarIcon: ({ focused, size }) => (
             <MaterialIcons
               name="store"
+              color={focused ? theme.colors.primary : theme.colors.darkBlue}
+              size={size}
+            />
+          ),
+        })}
+      />
+      <Tab.Screen
+        name="Cart"
+        component={CartRoutes}
+        options={({ route }) => ({
+          tabBarIcon: ({ focused, size }) => (
+            <MaterialIcons
+              name="request-page"
               color={focused ? theme.colors.primary : theme.colors.darkBlue}
               size={size}
             />

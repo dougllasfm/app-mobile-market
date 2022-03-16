@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { TouchableOpacity } from "react-native";
-import { storeLogin } from "../../utils/storage";
+import { getLogin, storeLogin } from "../../utils/storage";
 import axios from "axios";
 
 import {
@@ -23,14 +23,24 @@ export default function Login({ navigation }: Props) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  useEffect(() => {
+    verifiedLogin();
+  }, []);
+
+  async function verifiedLogin() {
+    const login = await getLogin();
+    if (login) {
+      navigation.navigate("Meu mercado");
+    }
+  }
+
   async function handleLogin() {
     try {
       const res = await axios.post("http://192.168.2.7:3060/authenticateUser", {
         email: email,
         password: password,
       });
-      storeLogin(res.data.userAlreadyExists.id)
-      navigation.navigate("Meu mercado");
+      storeLogin(res.data.userAlreadyExists.id);
     } catch (error) {
       console.log(error);
     }
