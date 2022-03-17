@@ -6,7 +6,7 @@ import {
   ProfileRoutes,
   CartRoutes,
 } from "./StackRoutes";
-import { MaterialIcons, AntDesign } from "@expo/vector-icons";
+import { MaterialIcons, AntDesign, Feather } from "@expo/vector-icons";
 import { useTheme } from "styled-components";
 
 const Tab = createBottomTabNavigator();
@@ -44,10 +44,10 @@ const TabNavigator = () => {
       <Tab.Screen
         name="Cart"
         component={CartRoutes}
-        options={({ route }) => ({
+        options={() => ({
           tabBarIcon: ({ focused, size }) => (
-            <MaterialIcons
-              name="request-page"
+            <Feather
+              name="shopping-cart"
               color={focused ? theme.colors.primary : theme.colors.darkBlue}
               size={size}
             />
@@ -57,7 +57,7 @@ const TabNavigator = () => {
       <Tab.Screen
         name="OrderScreen"
         component={OrderRoutes}
-        options={({ route }) => ({
+        options={() => ({
           tabBarIcon: ({ focused, size }) => (
             <MaterialIcons
               name="request-page"

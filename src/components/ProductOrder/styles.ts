@@ -6,11 +6,12 @@ export const Container = styled.View`
   justify-content: space-between;
   margin: 4px;
   padding: 8px;
-  background: #fff;
+  width: 95%;
 `;
 
 export const DetailsProduct = styled.View`
-  margin-left: -100px;
+  margin-left: 5px;
+  width: 60%;
 `;
 
 export const Name = styled.Text`
@@ -18,8 +19,12 @@ export const Name = styled.Text`
 `;
 
 export const Quantity = styled.Text`
-  color: ${({ theme }) => theme.colors.darkGray};
+  color: ${({ theme }) => theme.colors.darkGray2};
 `;
+
+export const ViewPrice = styled.View`
+  width: 20%;
+`
 
 export const Price = styled.Text`
   color: ${({ theme }) => theme.colors.green};

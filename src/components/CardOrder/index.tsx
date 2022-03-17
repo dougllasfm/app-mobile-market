@@ -30,7 +30,6 @@ function CardOrder(props: OrdersProps) {
         shadowRadius: 3.5,
         elevation: 2,
       }}
-      onPress={() => props.navigation.navigate("Order")}
     >
       <Image source={require("../../assets/logo.png")} />
       <Details>

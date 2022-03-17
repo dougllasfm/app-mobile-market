@@ -14,6 +14,20 @@ export const DetailsOrder = styled.View`
   background: #fff;
 `;
 
+export const ViewText = styled.View`
+  margin: 0 4px 4px;
+  padding: 8px;
+  background: #fff;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const TextNothing = styled.Text`
+  font-family: ${({ theme }) => theme.fonts.title};
+  font-size: 20px;
+  text-align: center;
+`
+
 export const NameMarket = styled.Text`
   font-size: ${RFPercentage(3.3)}px;
   font-weight: bold;

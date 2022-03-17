@@ -1,13 +1,14 @@
 import { Image } from "react-native";
-import { Container, DetailsProduct, Name, Quantity, Price } from "./styles";
+import { Container, DetailsProduct, Name, Quantity, Price, ViewPrice } from "./styles";
 
 type ProductOrderProps = {
   name: string;
-  price: string
-  quantity: number
+  price: string;
+  quantity: number;
+  weight: string
 };
 
-function ProductOrder({ name, quantity, price }: ProductOrderProps) {
+function ProductOrder({ name, quantity, price, weight }: ProductOrderProps) {
   return (
     <Container>
       <Image
@@ -22,10 +23,15 @@ function ProductOrder({ name, quantity, price }: ProductOrderProps) {
         }}
       />
       <DetailsProduct>
-        <Name>{name} - 500g</Name>
-        <Quantity>{quantity} x R$ {price}</Quantity>
+        <Name>{name} - {weight}</Name>
+        <Quantity>
+          {quantity} x R$ {price}
+        </Quantity>
       </DetailsProduct>
+      <ViewPrice>
       <Price>R$ {price}</Price>
+      </ViewPrice>
+      
     </Container>
   );
 }

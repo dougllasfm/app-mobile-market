@@ -36,7 +36,7 @@ function CardProduct({ id, name, price, quantity, weight, description, idCompany
   const theme = useTheme();
   const navigation = useNavigation();
   const { addCart, removeCart } = useContext(CartContext);
-  const { addProductInOrder, order } = useContext(OrderContext)
+  const { addProductInOrder, removeProductInOrder } = useContext(OrderContext)
   const [cartCont, setCardCont] = useState(0);
 
   function SetCart() {
@@ -46,6 +46,7 @@ function CardProduct({ id, name, price, quantity, weight, description, idCompany
       name,
       price,
       quantity: 1,
+      weight,
       idCompany
     }
     addProductInOrder(data)
@@ -53,6 +54,7 @@ function CardProduct({ id, name, price, quantity, weight, description, idCompany
   }
 
   function SetCartMinus() {
+    removeProductInOrder(id)
     setCardCont(cartCont - 1);
     removeCart();
   }

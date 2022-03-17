@@ -37,7 +37,7 @@ function Header({title }: Props) {
           />
         </TouchableOpacity>
         <Text>{title}</Text>
-        <Cart onPress={() => navigation.navigate("Order")}>
+        <Cart onPress={() => navigation.navigate("Cart")}>
           <ViewCartNumber>
             <CartNumber>{cart}</CartNumber>
           </ViewCartNumber>
