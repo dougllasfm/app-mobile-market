@@ -1,17 +1,12 @@
+import axios from "axios";
 import { useState } from "react";
 import { TouchableOpacity } from "react-native";
 import { storeLogin } from "../../utils/storage";
-
 import {
-  Container,
-  SubTitle,
-  Input,
-  Button,
-  Description,
-  Text,
-  TextLogin,
+  Button, Container, Description, Input, SubTitle, Text,
+  TextLogin
 } from "./styles";
-import axios from "axios";
+
 
 interface Props {
   navigation: any;
@@ -34,9 +29,9 @@ export default function Signin({ navigation }: Props) {
         address: address,
         telephone: telephone
       })  
+      storeLogin(res.data.userAlreadyExists.id);
       navigation.navigate("Meu mercado")
     } catch (error) {
-      console.log("ESTOU AQ")
       console.log(error)
     }
   }
