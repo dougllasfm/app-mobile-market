@@ -10,12 +10,6 @@ export const Container = styled.View`
   background: ${({ theme }) => theme.colors.primary};
 `;
 
-export const Title = styled.Text`
-  font-size: 24px;
-  margin-top: ${marginPlataform + "%"};
-  color: #fff;
-`;
-
 export const SubTitle = styled.Text`
   font-size: 18px;
   margin-top: ${marginPlataform + "%"};
@@ -27,8 +21,8 @@ export const Input = styled.TextInput`
   padding: 5px 10px;
   width: 80%;
   border-radius: 6px;
-  height: 53px;
-  margin: 5px;
+  height: 48px;
+  margin: 3px;
   background: #fff;
 `;
 
@@ -40,7 +34,6 @@ export const Button = styled.TouchableOpacity`
   justify-content: center;
   align-items: center;
   border-radius: 5px;
-  margin-top: 2%;
 `;
 
 export const Text = styled.Text`
@@ -51,7 +44,7 @@ export const Text = styled.Text`
 
 export const Description = styled.View`
   flex-direction: row;
-  margin-top: 30%;
+  margin-top: 10%;
   font-size: 14px;
   justify-content: center;
   align-items: center;

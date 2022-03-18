@@ -1,12 +1,14 @@
-import { ReactNode } from "react";
-import { View, Text, Image, TouchableOpacity } from "react-native";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 import {
   DrawerContentScrollView,
-  DrawerItemList,
+  DrawerItemList
 } from "@react-navigation/drawer";
+import { useNavigation } from "@react-navigation/native";
+import { ReactNode } from "react";
+import { Image, Text, TouchableOpacity, View } from "react-native";
 import { useTheme } from 'styled-components/native';
+import { signOut } from "../../utils/storage";
 
-import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 interface CustomDrawerProps {
   props: ReactNode;
@@ -14,6 +16,12 @@ interface CustomDrawerProps {
 
 function CustomDrawer({ props }: CustomDrawerProps) {
   const theme = useTheme()
+  const navigation = useNavigation();
+
+  async function logout() {
+    await signOut()
+    navigation.navigate("Login")
+  }
 
   return (
     <View style={{ flex: 1 }}>
@@ -37,16 +45,17 @@ function CustomDrawer({ props }: CustomDrawerProps) {
             fontSize: 18,
             marginBottom: 10,
             marginHorizontal: 10,
+            fontWeight: "bold"
           }}
         >
-          Douglas Munaro
+          Nome de usuário
         </Text>
         <View style={{ flex: 1, paddingTop: 10 }}>
           <DrawerItemList {...props} />
         </View>
       </DrawerContentScrollView>
       <View style={{ padding: 20, borderTopWidth: 1, borderTopColor: "#ccc" }}>
-        <TouchableOpacity onPress={() => {}} style={{ paddingVertical: 15 }}>
+        <TouchableOpacity onPress={() => logout()} style={{ paddingVertical: 15 }}>
           <View style={{ flexDirection: "row", alignItems: "center", }}>
           <MaterialCommunityIcons name="exit-to-app" size={24} color="#fff" />
             <Text

@@ -1,32 +1,26 @@
-import { useEffect, useState } from "react";
+import { AntDesign, MaterialIcons } from "@expo/vector-icons";
 import axios from "axios";
-import { Alert, Image } from "react-native";
-import { MaterialIcons, AntDesign, Ionicons } from "@expo/vector-icons";
-import Button from "../../components/Button";
+import { useEffect, useState } from "react";
+import { Image } from "react-native";
 import CardProduct from "../../components/CardProduct";
 import Header from "../../components/Header";
-
 import {
-  Container,
+  Address,
+  ButtonCategory, Container,
+  InfosMarket, NameCompany,
+  Options, Status,
+  TaxView,
+  Text,
+  TextCategory,
+  TextTax,
   ViewCompany,
   ViewInfosCompany,
-  ViewNameAndSatus,
-  NameCompany,
-  Status,
-  Options,
-  InfosMarket,
-  Address,
-  TaxView,
-  TextTax,
-  Search,
-  Input,
-  ButtonSearch,
-  Text,
   ViewList,
+  ViewNameAndSatus
 } from "./styles";
 
 type CompanyProps = {
-  id: number
+  id: number;
   name: string;
   address: string;
   taxMinimum: string;
@@ -36,7 +30,7 @@ type CompanyProps = {
 };
 
 type ProductsProps = {
-  id: number
+  id: number;
   name: string;
   price: string;
   weight: string;
@@ -46,8 +40,10 @@ type ProductsProps = {
 };
 
 export default function Market({ route }: any) {
+  const [search, setSearch] = useState<string>("");
   const [company, setCompany] = useState<CompanyProps>();
   const [products, setProducts] = useState<ProductsProps[]>([]);
+  const [allProducts, setAllProducts] = useState<ProductsProps[]>([]);
 
   useEffect(() => {
     loadDataCompany();
@@ -59,8 +55,29 @@ export default function Market({ route }: any) {
         "http://192.168.2.7:3060/company",
         route.params.id
       );
-      setProducts(res.data.products);
       setCompany(res.data);
+      setProducts(res.data.products);
+      setAllProducts(res.data.products);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async function handleFilterCategory(category: string) {
+    try {
+      if (category === "Todos") {
+        setProducts(allProducts);
+      } else {
+        let productsFilter: ProductsProps[] = [];
+
+        allProducts.map((element) => {
+          if (element.category === category) {
+            productsFilter.push(element);
+          }
+        });
+
+        setProducts(productsFilter);
+      }
     } catch (error) {
       console.log(error);
     }
@@ -113,17 +130,19 @@ export default function Market({ route }: any) {
               <TextTax>Compra mínima R$ {company.buyMinimum}</TextTax>
             </TaxView>
           </InfosMarket>
-          <Search>
-            <Input placeholder="Pesquisar produto" />
-            <ButtonSearch onPress={() => Alert.alert("Simple Button pressed")}>
-              <Text>
-                <Ionicons name="md-search-outline" size={24} color={"#fff"} />
-              </Text>
-            </ButtonSearch>
-          </Search>
           <Options>
-            {products.map((item) => {
-              return <Button key={item.name} name={item.category} />;
+            <ButtonCategory onPress={() => handleFilterCategory("Todos")}>
+              <TextCategory>Todos</TextCategory>
+            </ButtonCategory>
+            {allProducts.map((item) => {
+              return (
+                <ButtonCategory
+                  onPress={() => handleFilterCategory(item.category)}
+                  key={item.name}
+                >
+                  <TextCategory>{item.category}</TextCategory>
+                </ButtonCategory>
+              );
             })}
           </Options>
           <ViewList>

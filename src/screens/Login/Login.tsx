@@ -1,19 +1,11 @@
-import { useEffect, useState } from "react";
-import { TouchableOpacity } from "react-native";
-import { getLogin, storeLogin } from "../../utils/storage";
 import axios from "axios";
-
+import { useEffect, useState } from "react";
+import { Alert, TouchableOpacity } from "react-native";
+import { getLogin, storeLogin } from "../../utils/storage";
 import {
-  Container,
-  Title,
-  SubTitle,
-  Input,
-  Button,
-  Description,
-  Text,
-  SigninText,
-  TextSignin,
+  Button, Container, Description, Input, SigninText, Text, TextSignin, Title
 } from "./styles";
+
 
 interface Props {
   navigation: any;
@@ -41,17 +33,17 @@ export default function Login({ navigation }: Props) {
         password: password,
       });
       storeLogin(res.data.userAlreadyExists.id);
+      navigation.navigate("Meu mercado");
     } catch (error) {
-      console.log(error);
+      Alert.alert("Email ou senha incorretos")
     }
   }
 
   return (
     <Container>
       <Title>Meu Mercado</Title>
-      <SubTitle>Acesse sua conta</SubTitle>
       <Input placeholder="Email" onChangeText={setEmail} value={email} />
-      <Input placeholder="Senha" onChangeText={setPassword} value={password} />
+      <Input secureTextEntry={true} placeholder="Senha" onChangeText={setPassword} value={password} />
       <Button onPress={() => handleLogin()}>
         <Text>Entrar</Text>
       </Button>

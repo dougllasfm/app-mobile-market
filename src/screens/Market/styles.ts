@@ -7,8 +7,8 @@ type Props = {
 }
 
 export const Container = styled.ScrollView`
-  background: #fff;
   flex: 1;
+  background: #fff;
   margin-top: ${Platform.OS === "android" ? 24 + "px" : 0};
 `;
 
@@ -51,6 +51,22 @@ export const Options = styled.ScrollView.attrs({
   padding: 10px 5px;
   background: #fff;
   margin-right: 10px;
+`;
+
+export const ButtonCategory = styled.TouchableOpacity`
+  height: 40px;
+  border-radius: 8px;
+  background: ${({ theme }) => theme.colors.darkBlue};
+  justify-content: center;
+  align-items: center;
+  width: 92px;
+  margin: 0 5px;
+
+`
+
+export const TextCategory = styled.Text`
+  color: #fff;
+  font-family: ${({ theme }) => theme.fonts.title};
 `;
 
 export const InfosMarket = styled.View`

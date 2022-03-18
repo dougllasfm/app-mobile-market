@@ -4,7 +4,6 @@ import { storeLogin } from "../../utils/storage";
 
 import {
   Container,
-  Title,
   SubTitle,
   Input,
   Button,
@@ -44,7 +43,6 @@ export default function Signin({ navigation }: Props) {
 
   return (
     <Container>
-      <Title>Meu Mercado</Title>
       <SubTitle>Criar nova conta</SubTitle>
       <Input placeholder="Nome" onChangeText={setName} value={name} />
       <Input placeholder="Email" onChangeText={setEmail} value={email} />

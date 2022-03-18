@@ -18,4 +18,13 @@ const storeLogin = async (value: string) => {
   }
 }
 
-export { getLogin, storeLogin }
+const signOut = async () => {
+  try {
+    await AsyncStorage.removeItem("@login")
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+export { getLogin, storeLogin, signOut };
+
