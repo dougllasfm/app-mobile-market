@@ -8,6 +8,7 @@ ao selecionar algum vai para a tela que contém seus produtos e alguns detalhes 
 o pedido, tem a tela onde o usuário pode ver todos os pedidos. Obs: Foi meu segundo aplicativo mobile com o react-native, então resolvi deixar só essas funcionalidade.
 
 ## Layout 
+Todas as imagens foram utilizadas de forma aleatória.
 ![Home](https://github.com/dougllasfm/app-mobile-market/blob/main/assets/inicial.jpeg)
 ![Market](https://github.com/dougllasfm/app-mobile-market/blob/main/assets/market.jpeg)
 
